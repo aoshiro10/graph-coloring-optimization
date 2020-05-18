@@ -14,11 +14,14 @@ class Vertex:
 		return "Vertex: " + self.name + "\n" + "Neighbors: " + neighborNames
 
 class Graph:
-
 	def __init__(self, filename):
 		self.vertices = Graph.getVertices(filename)
 		for vertex in self.vertices:
 			print(vertex)
+
+	# TODO
+	def setRandomColoring(self):
+		pass
 
 	@staticmethod
 	def getVertices(filename):
