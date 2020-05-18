@@ -1,2 +1,2 @@
-# graph-coloring-optimization
+# Graph Coloring Optimization
 Using genetic algorithm to solve the graph coloring np-complete problem.
