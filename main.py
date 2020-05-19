@@ -1,3 +1,8 @@
-from graph import *
+from graphs import *
+from geneticAlgorithm import *
 
-graph = Graph("graph1.gx")
+colorNum = 3
+graph = Graph("graph1.gx", colorNum)
+graph.setRandomColoring()
+
+print(fitness(graph))
