@@ -2,6 +2,6 @@
 Using genetic algorithm to solve the graph coloring np-complete problem.
 
 
-Requires:
+Required libraries:
 - matplotlib
 - networkx
