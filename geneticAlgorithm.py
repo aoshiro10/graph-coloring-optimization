@@ -1,4 +1,5 @@
 from graphs import *
+from random import random
 
 NUM_INDIVIDUALS = int(1e3)
 
@@ -35,3 +36,10 @@ def evaluateGeneration(population):
 			maxFitness = fitnessScore
 
 	return (fitnessScores, argMax)
+
+def matingRandom(parent1, parent2):
+	child = parent1.copy()
+	for vertex in parent2.getVertices():
+		if random() < 0.5:
+			child.getVertex(vertex.name).setColor(vertex.color)
+	return child
