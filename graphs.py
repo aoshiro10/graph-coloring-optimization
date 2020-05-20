@@ -29,14 +29,13 @@ class Graph:
 	def __init__(self, filename, colorNum):
 		self.vertices = Graph.buildVertices(filename)
 		self.colorNum = colorNum
-		self.setRandomColoring()
 
 	def getVertices(self):
 		return self.vertices
 
 	def setRandomColoring(self):
 		for vertex in self.vertices:
-			vertex.color = list(Colors)[random.randint(0,6)]
+			vertex.color = list(Colors)[random.randint(0,self.colorNum-1)]
 
 	@staticmethod
 	def buildVertices(filename):

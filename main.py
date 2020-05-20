@@ -3,9 +3,14 @@ from geneticAlgorithm import *
 from visualizeGraph import *
 
 colorNum = 3
-graph = Graph("graph1.gx", colorNum)
-graph.setRandomColoring()
+graphPath = "graph1.gx"
+population = createInitialPopulation(graphPath, colorNum)
 
-print(fitness(graph))
-
-plotGraph(graph)
+# Careful! This might create infinite graphs
+while True:
+	fitnessScores, bestGraph = evaluateGeneration(population)
+	plotGraph(bestGraph)
+	if fitness(bestGraph) == 1:
+		break
+	# Temporary
+	population = createInitialPopulation(graphPath, colorNum)
