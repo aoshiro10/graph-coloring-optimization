@@ -16,11 +16,14 @@ class Vertex:
 				return False
 		return True
 
-	def __repr__(self):
+	'''def __repr__(self):
 		neighborNames = ""
 		for neighbor in self.neighbors:
 			neighborNames += (neighbor.name + " ")
-		return "Vertex: " + self.name + "\n" + "Neighbors: " + neighborNames
+		return "Vertex: " + self.name + "\n" + "Neighbors: " + neighborNames'''
+
+	def __repr__(self):
+		return str(self.name)
 
 class Graph:
 	def __init__(self, filename, colorNum):
@@ -41,7 +44,7 @@ class Graph:
 		verticesDict = {} #vertex name -> vertex object
 
 		while True:
-			vertexLine = graphText.readline() 
+			vertexLine = graphText.readline()
 			if not vertexLine:
 				break
 
