@@ -7,6 +7,12 @@ class Vertex:
 		self.color = Colors.BLACK
 		self.neighbors = []
 
+	def getName(self):
+		return self.name
+
+	def getColor(self):
+		return self.color
+
 	def setColor(self, color):
 		self.color = color
 
@@ -27,18 +33,29 @@ class Vertex:
 
 class Graph:
 	def __init__(self, filename, colorNum):
-		self.vertices = Graph.buildVertices(filename)
+		self.filename = filename
+		self.verticesDict = Graph.buildVerticesDict(filename)
 		self.colorNum = colorNum
 
 	def getVertices(self):
-		return self.vertices
+		return list(self.verticesDict.values())
 
 	def setRandomColoring(self):
 		for vertex in self.vertices:
 			vertex.color = list(Colors)[randint(0,self.colorNum-1)]
 
+	def copy(self):
+		newGraph = Graph(self.filename, self.colorNum)
+		for newVertexName in newGraph.verticesDict:
+			newVertex = newGraph[newVertexName]
+			newVertex.color = self.verticesDict[newVertexName].color
+		return newGraph
+
+	def getVertex(self, vertexName):
+		return self.verticesDict[vertexName]
+
 	@staticmethod
-	def buildVertices(filename):
+	def buildVerticesDict(filename):
 		graphText = open(filename, 'r')
 		verticesDict = {} #vertex name -> vertex object
 
@@ -59,8 +76,4 @@ class Graph:
 
 		graphText.close()
 
-		vertices = []
-		for verticeNames in verticesDict:
-			vertices.append(verticesDict[verticeNames])
-
-		return vertices
+		return verticesDict
