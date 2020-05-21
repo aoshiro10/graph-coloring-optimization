@@ -44,7 +44,15 @@ def matingRandom(parent1, parent2):
 	child = parent1.copy()
 	for vertex in parent2.getVertices():
 		if random() < 0.5:
-			child.getVertex(vertex.name).setColor(vertex.color)
+			child.getVertex(vertex.getName()).setColor(vertex.getColor())
+	return child
+
+def matingHalfHalf(parent1, parent2):
+	child = parent1.copy()
+	verticesNum = len(parent1.getVertices())
+	for vertexI in range(verticesNum//2, verticesNum):
+		parent2Vertex = parent2.getVertex(vertexI)
+		child.getVertex(vertexI).setColor(parent2Vertex.getColor())
 	return child
 
 def mutateGeneration(population):

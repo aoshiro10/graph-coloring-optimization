@@ -7,6 +7,12 @@ class Vertex:
 		self.color = Colors.BLACK
 		self.neighbors = []
 
+	def getName(self):
+		return self.name
+
+	def getColor(self):
+		return self.color
+
 	def setColor(self, color):
 		self.color = color
 
