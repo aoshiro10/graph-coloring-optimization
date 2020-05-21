@@ -1,6 +1,9 @@
 from graphs import *
+from random import random
+import colors
 
 NUM_INDIVIDUALS = int(1e3)
+MUTATION_RATE = 0.05
 
 # Calculates the fitness of the graph between 0 and 1 (inclusive)
 # Fitness is calculate based on the number of vertices with no neighboring vertex with the same color
@@ -35,3 +38,15 @@ def evaluateGeneration(population):
 			maxFitness = fitnessScore
 
 	return (fitnessScores, argMax)
+
+def mutateGeneration(population):
+	for graph in population:
+		mutateGraph(graph)
+
+def mutateGraph(graph):
+	vertices = graph.getVertices()
+	for vertex in vertices:
+		rand = random()
+		if rand < MUTATION_RATE:
+			vertex.setColor(colors.getRandomColor(graph.colorNum))
+
