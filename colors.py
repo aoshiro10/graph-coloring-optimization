@@ -1,4 +1,5 @@
 from enum import Enum
+from random import randint
 
 class Colors(Enum):
 	RED = 0
@@ -9,11 +10,25 @@ class Colors(Enum):
 	PURPLE = 5
 	WHITE = 6
 
-plotColorsDict = dict()
-plotColorsDict[Colors.RED] = "red"
-plotColorsDict[Colors.GREEN] = "green"
-plotColorsDict[Colors.BLUE] = "blue"
-plotColorsDict[Colors.YELLOW] = "yellow"
-plotColorsDict[Colors.BLACK] = "black"
-plotColorsDict[Colors.PURPLE] = "purple"
-plotColorsDict[Colors.WHITE] = "white"
+colors = [
+	Colors.RED, 
+	Colors.GREEN,
+	Colors.BLUE,
+	Colors.YELLOW,
+	Colors.BLACK,
+	Colors.PURPLE,
+	Colors.WHITE,
+]
+
+def getRandomColor(colorNums):
+	return colors[randint(0, colorNums-1)]
+
+plotColorsDict = {
+	Colors.RED: "red",
+	Colors.GREEN: "green",
+	Colors.BLUE: "blue",
+	Colors.YELLOW: "yellow",
+	Colors.BLACK: "black",
+	Colors.PURPLE: "purple",
+	Colors.WHITE: "white"
+}

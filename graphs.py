@@ -1,5 +1,5 @@
 from colors import *
-import random
+from random import randint
 
 class Vertex:
 	def __init__(self, name):
@@ -36,7 +36,7 @@ class Graph:
 
 	def setRandomColoring(self):
 		for vertex in self.vertices:
-			vertex.color = list(Colors)[random.randint(0,self.colorNum-1)]
+			vertex.color = list(Colors)[randint(0,self.colorNum-1)]
 
 	def copy(self):
 		newGraph = Graph(self.filename, self.colorNum)
