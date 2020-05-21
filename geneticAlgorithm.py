@@ -39,6 +39,14 @@ def evaluateGeneration(population):
 
 	return (fitnessScores, argMax)
 
+
+def matingRandom(parent1, parent2):
+	child = parent1.copy()
+	for vertex in parent2.getVertices():
+		if random() < 0.5:
+			child.getVertex(vertex.name).setColor(vertex.color)
+	return child
+
 def mutateGeneration(population):
 	for graph in population:
 		mutateGraph(graph)
@@ -49,4 +57,5 @@ def mutateGraph(graph):
 		rand = random()
 		if rand < MUTATION_RATE:
 			vertex.setColor(colors.getRandomColor(graph.colorNum))
+
 
