@@ -24,12 +24,12 @@ while True or generations > MAX_GENS:
         break
 
     parents = sampleParents.sampleBestParents(fitnessScores)
-    newPopulation = [bestGraph]
-    parents = parents[:-1] # get rid of one set of parents to make room for bestGraph
+    newPopulation = []
     for (idxParent1, idxParent2) in parents:
         parent1, parent2 = population[idxParent1], population[idxParent2]
         child = mating_fn(parent1, parent2)
         newPopulation.append(child)
+    newPopulation[0] = bestGraph # want to make sure the best member stays
 
     population = newPopulation
     mutateGeneration(population)
