@@ -34,5 +34,6 @@ while True or generations > MAX_GENS:
     population = newPopulation
     mutateGeneration(population)
 
-plotGraph(bestGraph)
+    plotGraph(bestGraph, generations)
+
 print(generations)
