@@ -41,7 +41,7 @@ class Graph:
 		return list(self.verticesDict.values())
 
 	def setRandomColoring(self):
-		for vertex in self.vertices:
+		for vertex in self.getVertices():
 			vertex.color = list(Colors)[randint(0,self.colorNum-1)]
 
 	def copy(self):

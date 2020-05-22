@@ -5,8 +5,8 @@ from colors import *
 
 def convertToNX(graph):
     G = nx.Graph()
-    G.add_nodes_from(graph.vertices)
-    for node in graph.vertices:
+    G.add_nodes_from(graph.getVertices())
+    for node in graph.getVertices():
         for neighbor in node.neighbors:
             G.add_edge(node, neighbor)
 
@@ -14,7 +14,7 @@ def convertToNX(graph):
 
 def plotGraph(graph):
     G = convertToNX(graph)
-    cols = [x.color for x in graph.vertices]
+    cols = [x.color for x in graph.getVertices()]
     cols = [plotColorsDict[color] for color in cols]
     nx.draw_networkx(G, node_color = cols)
     plt.show()
