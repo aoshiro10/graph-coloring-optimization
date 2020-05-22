@@ -65,11 +65,12 @@ class Graph:
 				break
 
 			lineValues = vertexLine.split(" ")
-			vertexName = lineValues[0]
+			vertexName = int(lineValues[0])
 			vertex = verticesDict.get(vertexName, Vertex(vertexName))
 			verticesDict[vertexName] = vertex
 			neighborsNames = lineValues[1].strip().split(",")
-			for neighborName in neighborsNames:
+			for neighborNameStr in neighborsNames:
+				neighborName = int(neighborNameStr)
 				neighbor = verticesDict.get(neighborName, Vertex(neighborName))
 				verticesDict[neighborName] = neighbor
 				vertex.neighbors.append(neighbor)
