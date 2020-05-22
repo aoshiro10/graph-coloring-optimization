@@ -22,12 +22,6 @@ class Vertex:
 				return False
 		return True
 
-	'''def __repr__(self):
-		neighborNames = ""
-		for neighbor in self.neighbors:
-			neighborNames += (neighbor.name + " ")
-		return "Vertex: " + self.name + "\n" + "Neighbors: " + neighborNames'''
-
 	def __repr__(self):
 		return str(self.name)
 
@@ -47,7 +41,7 @@ class Graph:
 	def copy(self):
 		newGraph = Graph(self.filename, self.colorNum)
 		for newVertexName in newGraph.verticesDict:
-			newVertex = newGraph[newVertexName]
+			newVertex = newGraph.verticesDict[newVertexName]
 			newVertex.color = self.verticesDict[newVertexName].color
 		return newGraph
 

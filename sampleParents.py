@@ -33,8 +33,13 @@ def sampleBestParents(fitnesses):
     fitnesses = np.array(fitnesses)
     prefixSums, totalSum = getPrefixSums(fitnesses)
 
-    samples = np.zeros((NUM_INDIVIDUALS,))
-    for i in range(NUM_INDIVIDUALS):
-        samples[i] = singleSample(prefixSums, totalSum)
+    samples = []
+    for _ in range(NUM_INDIVIDUALS):
+        parent1 = singleSample(prefixSums, totalSum)
+        parent2 = singleSample(prefixSums, totalSum)
+        while parent2 == parent1:
+            parent2 = singleSample(prefixSums, totalSum)
+
+        samples.append( (parent1, parent2) )
 
     return samples
