@@ -18,7 +18,7 @@ def fitness(graph):
 def createInitialPopulation(graph_path, colorNum):
 	population = []
 	for _ in range(NUM_INDIVIDUALS):
-		graph = Graph("graph1.gx", colorNum)
+		graph = Graph(graph_path, colorNum)
 		graph.setRandomColoring()
 		population.append(graph)
 	return population

@@ -1,19 +1,23 @@
 from random import randint
-from random import sample
 
 VERTICES_MIN = 20
 VERTICES_MAX = 60
 
 EDGES_MIN = 1 #Per Vertex
-EDGES_MAX = 4 #Per Vertex
+EDGES_MAX = 6 #Per Vertex
 
 
 # Creates a square matrix representing the graph
 def createMatrix(width):
-	return [([False] * width) for i in range(width)]
+	return [([0] * width) for i in range(width)]
 
-def buildGraph():
+
+def buildGraph(file_name):
 	vertices = randint(VERTICES_MIN, VERTICES_MAX)
+	# Matrix representation of the graph.
+	# Since there are no self-loop the top left to bottom right diagonal
+	# would be completely empty. For space efficiency, that diagonal will be used
+	# to store the number of edges connecting a single vertex.
 	matrix = createMatrix(vertices)
 
 	#Used to get random edges
@@ -21,22 +25,44 @@ def buildGraph():
 
 	for vertexI in range(vertices):
 		edgesCount = randint(EDGES_MIN, EDGES_MAX)
-		edges = sample(sampleVertices, edgesCount)
 
-		for vertexJ in edges:
-			matrix[vertexI][vertexJ] = True
-			matrix[vertexJ][vertexI] = True
+		# Get number of edges already connecting the vertex
+		edgeI = matrix[vertexI][vertexI]
 
-	matrixToText(matrix)
+		iteration = 0
+		# break while loop if there is no more vertex to connect.
+		while edgeI < edgesCount and iteration < vertices:
+			vertexJ = randint(0, vertices-1)
 
-def matrixToText(matrix):
+			# No self-loop  
+			# No duplicate edge 
+			# No vertices w/ more than EDGES_MAX edges.
+			if (vertexI != vertexJ and 
+				matrix[vertexI][vertexJ] == 0 and 
+				matrix[vertexJ][vertexJ] < EDGES_MAX):
+
+				matrix[vertexI][vertexJ] = 1
+				matrix[vertexJ][vertexI] = 1
+
+				matrix[vertexI][vertexI] += 1
+				matrix[vertexJ][vertexJ] += 1
+
+				edgeI += 1
+
+			iteration += 1
+
+	matrixToFile(matrix, file_name)
+
+def matrixToFile(matrix, file_name):
 	text = ""
 
 	for row in range(len(matrix)):
 		text += str(row) + " "
 		for col in range(len(matrix)):
-			if matrix[row][col]:
+			if row != col and matrix[row][col]:
 				text += str(col) + ","
 		text += "\n"
-	
-	return text
+
+	f = open(file_name, "w")
+	f.write(text)
+	f.close()
