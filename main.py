@@ -17,9 +17,9 @@ verbose = True
 while True or generations > MAX_GENS:
     generations += 1
 
-    plotGraph(bestGraph, generations)
-
     fitnessScores, bestGraph = evaluateGeneration(population)
+
+    plotGraph(bestGraph, generations)
 
     if verbose:
         print("Sum of Fitness Scores: ", np.sum(fitnessScores))
