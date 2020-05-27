@@ -14,7 +14,7 @@ MAX_GENS = int(1e3)
 mating_fn = matingHalfHalf
 verbose = True
 
-while True or generations > MAX_GENS:
+while generations < MAX_GENS:
     generations += 1
 
     fitnessScores, bestGraph = evaluateGeneration(population)
@@ -22,10 +22,10 @@ while True or generations > MAX_GENS:
     plotGraph(bestGraph, generations)
 
     if verbose:
-        print("Sum of Fitness Scores: ", np.sum(fitnessScores))
+        print("fitness:", fitness(bestGraph))
 
-    #if fitness(bestGraph) == 1:
-    #    break
+    if fitness(bestGraph) == 1:
+        break
 
     parents = sampleParents.sampleBestParents(fitnessScores)
     newPopulation = []
@@ -40,3 +40,7 @@ while True or generations > MAX_GENS:
 
 plotGraph(bestGraph, generations)
 print(generations)
+
+while True:
+    pass
+
