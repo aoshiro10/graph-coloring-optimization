@@ -5,7 +5,7 @@ from visualizeGraph import *
 import sampleParents
 import pdb
 
-colorNum = 3
+colorNum = 4
 graphPath = "graph2.gx"
 population = createInitialPopulation(graphPath, colorNum)
 bestGraph = None
@@ -33,10 +33,11 @@ while generations < MAX_GENS:
         parent1, parent2 = population[idxParent1], population[idxParent2]
         child = mating_fn(parent1, parent2)
         newPopulation.append(child)
-    newPopulation[0] = bestGraph # want to make sure the best member stays
 
     population = newPopulation
+    population[0] = bestGraph.copy() # set best graph for mutation
     mutateGeneration(population)
+    population[1] = bestGraph.copy() # want to make sure the best member stays
 
 plotGraph(bestGraph, generations)
 print(generations)
