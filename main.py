@@ -6,7 +6,7 @@ import sampleParents
 import pdb
 
 colorNum = 3
-graphPath = "graph1.gx"
+graphPath = "graph2.gx"
 population = createInitialPopulation(graphPath, colorNum)
 bestGraph = None
 generations = 0
