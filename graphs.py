@@ -62,7 +62,7 @@ class Graph:
 			vertexName = int(lineValues[0])
 			vertex = verticesDict.get(vertexName, Vertex(vertexName))
 			verticesDict[vertexName] = vertex
-			neighborsNames = lineValues[1].strip().split(",")
+			neighborsNames = lineValues[1].strip().split(",")[:-1]
 			for neighborNameStr in neighborsNames:
 				neighborName = int(neighborNameStr)
 				neighbor = verticesDict.get(neighborName, Vertex(neighborName))
