@@ -26,7 +26,9 @@ while generations < MAX_GENS:
         print(fitness(bestGraph))
 
     if fitness(bestGraph) == 1:
-       break
+        break
+        print("fitness:", fitness(bestGraph))
+
 
     parents = sampleParents.sampleBestParents(fitnessScores)
     newPopulation = []
@@ -41,5 +43,7 @@ while generations < MAX_GENS:
 
 plotGraph(bestGraph, generations)
 print(generations)
+
 while True:
     pass
+
